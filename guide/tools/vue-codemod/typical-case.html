@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>利用 vue-codemod 工具升级到 Vue3 | Origin.js</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/docs/assets/img/logo.png">
+    <meta name="description" content="description balabala">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.945a4b62.css" as="style"><link rel="preload" href="/docs/assets/js/app.b8ceaf7d.js" as="script"><link rel="preload" href="/docs/assets/js/2.897ca024.js" as="script"><link rel="preload" href="/docs/assets/js/33.e29cce6c.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.ff2d1adc.js"><link rel="prefetch" href="/docs/assets/js/11.585971aa.js"><link rel="prefetch" href="/docs/assets/js/12.c60f7ffd.js"><link rel="prefetch" href="/docs/assets/js/13.7552bacf.js"><link rel="prefetch" href="/docs/assets/js/14.5c6e4422.js"><link rel="prefetch" href="/docs/assets/js/15.2ee89848.js"><link rel="prefetch" href="/docs/assets/js/16.1e230b47.js"><link rel="prefetch" href="/docs/assets/js/17.4736f439.js"><link rel="prefetch" href="/docs/assets/js/18.383e4d5f.js"><link rel="prefetch" href="/docs/assets/js/19.fe79701a.js"><link rel="prefetch" href="/docs/assets/js/20.d2ee7e13.js"><link rel="prefetch" href="/docs/assets/js/21.7f6a14b4.js"><link rel="prefetch" href="/docs/assets/js/22.996dd369.js"><link rel="prefetch" href="/docs/assets/js/23.4db6939b.js"><link rel="prefetch" href="/docs/assets/js/24.434d4979.js"><link rel="prefetch" href="/docs/assets/js/25.eea85442.js"><link rel="prefetch" href="/docs/assets/js/26.1a8f430b.js"><link rel="prefetch" href="/docs/assets/js/27.81394d22.js"><link rel="prefetch" href="/docs/assets/js/28.5b13a81b.js"><link rel="prefetch" href="/docs/assets/js/29.98fe15d2.js"><link rel="prefetch" href="/docs/assets/js/3.19a2bcbd.js"><link rel="prefetch" href="/docs/assets/js/30.8e1242e6.js"><link rel="prefetch" href="/docs/assets/js/31.24d62fd8.js"><link rel="prefetch" href="/docs/assets/js/32.e1fe98d0.js"><link rel="prefetch" href="/docs/assets/js/34.f02809f3.js"><link rel="prefetch" href="/docs/assets/js/35.bc4b1d5e.js"><link rel="prefetch" href="/docs/assets/js/4.c56cea01.js"><link rel="prefetch" href="/docs/assets/js/5.4c8362f1.js"><link rel="prefetch" href="/docs/assets/js/6.a3db1209.js"><link rel="prefetch" href="/docs/assets/js/7.02c65e8a.js"><link rel="prefetch" href="/docs/assets/js/8.61039f40.js"><link rel="prefetch" href="/docs/assets/js/9.b38269e6.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.945a4b62.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">Origin.js</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/guide/" class="nav-link router-link-active">
+  指南
+</a></div><div class="nav-item"><a href="https://github.com/originjs/origin.js/releases" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  更新记录
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="选择语言" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="选择语言" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/guide/tools/vue-codemod/typical-case.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/docs/en/guide/tools/vue-codemod/typical-case.html" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/originjs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/guide/" class="nav-link router-link-active">
+  指南
+</a></div><div class="nav-item"><a href="https://github.com/originjs/origin.js/releases" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  更新记录
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="选择语言" class="dropdown-title"><span class="title">选择语言</span> <span class="arrow down"></span></button> <button type="button" aria-label="选择语言" class="mobile-dropdown-title"><span class="title">选择语言</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/guide/tools/vue-codemod/typical-case.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  简体中文
+</a></li><li class="dropdown-item"><!----> <a href="/docs/en/guide/tools/vue-codemod/typical-case.html" class="nav-link">
+  English
+</a></li></ul></div></div> <a href="https://github.com/originjs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>介绍</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/guide/" aria-current="page" class="sidebar-link">Origin.js 是什么</a></li><li><a href="/docs/installation.html" class="sidebar-link">安装</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>CLI</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/guide/cli/start/" class="sidebar-link">快速开始</a></li><li><a href="/docs/guide/cli/tools/" class="sidebar-link">使用工具</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>插件</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/guide/plugins/vite-plugin-global-style/" class="sidebar-link">vite-plugin-global-style</a></li><li><a href="/docs/guide/plugins/vite-plugin-content/" class="sidebar-link">vite-plugin-content</a></li><li><a href="/docs/guide/plugins/vite-plugin-pages/" class="sidebar-link">vite-plugin-pages</a></li><li><a href="/docs/guide/plugins/vite-plugin-federation/" class="sidebar-link">vite-plugin-federation</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>工具</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group is-sub-group depth-1"><a href="/docs/guide/tools/vue-codemod/" class="sidebar-heading clickable router-link-active open"><span>vue-codemod</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/guide/tools/vue-codemod/" aria-current="page" class="sidebar-link">使用指导</a></li><li><a href="/docs/guide/tools/vue-codemod/manual-guide.html" class="sidebar-link">手动迁移指导</a></li><li><a href="/docs/guide/tools/vue-codemod/typical-case.html" aria-current="page" class="active sidebar-link">典型实践</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/guide/tools/vue-codemod/typical-case.html#概述" class="sidebar-link">概述</a></li><li class="sidebar-sub-header"><a href="/docs/guide/tools/vue-codemod/typical-case.html#迁移步骤" class="sidebar-link">迁移步骤</a></li><li class="sidebar-sub-header"><a href="/docs/guide/tools/vue-codemod/typical-case.html#最后我们来看看效果图" class="sidebar-link">最后我们来看看效果图</a></li></ul></li></ul></section></li><li><a href="/docs/guide/tools/webpack-to-vite/" class="sidebar-link">webpack-to-vite</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="利用-vue-codemod-工具升级到-vue3"><a href="#利用-vue-codemod-工具升级到-vue3" class="header-anchor">#</a> 利用 vue-codemod 工具升级到 Vue3</h1> <h2 id="概述"><a href="#概述" class="header-anchor">#</a> 概述</h2> <p>Vue3 正式版本发布已经半年有余，同时 Vue2 会逐步停止维护，如何将现有的 Vue2 工程迁移到 Vue3 成为了大家关心的问题，尽管目前 Vue 官方有了详细的迁移指导，但实际项目中源码升级迁移工作量比较大，为减少重复性工作，这里推荐一款迁移工具 <a href="https://github.com/originjs/vue-codemod" target="_blank" rel="noopener noreferrer">originjs/vue-codemod<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> ，该工具可以将大部分的 Vue2（推荐 Vue2.6 以上版本）的语法直接升级成 Vue3 语法，之后配合一些手动更改完成 Vue2 项目的迁移。</p> <blockquote><p>说明：<a href="https://github.com/vuejs/vue-codemod" target="_blank" rel="noopener noreferrer">originjs/vue-codemod<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 是基于 <a href="https://github.com/vuejs/vue-codemod" target="_blank" rel="noopener noreferrer">vuejs/vue-codemod<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 的 fork 仓库，由于上游社区作者繁忙，暂时没有将我们的特性合入到原始项目中，因此我们在自己的 fork 仓库上继续特性开发。</p></blockquote> <p>演示项目地址：<a href="https://github.com/originjs/vue2-element-touzi-admin/tree/to-vue3" target="_blank" rel="noopener noreferrer">vue2-element-touzi-admin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="迁移步骤"><a href="#迁移步骤" class="header-anchor">#</a> 迁移步骤</h2> <h3 id="step1-使用-vue-codemod-来改造我们的源代码"><a href="#step1-使用-vue-codemod-来改造我们的源代码" class="header-anchor">#</a> Step1：<a href="https://github.com/originjs/vue2-element-touzi-admin/commit/21aeb41bf8595a7a6323a92ed9326cec4c7f5955" target="_blank" rel="noopener noreferrer">使用 Vue codemod 来改造我们的源代码<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h3> <blockquote><p>注意：vue-codemod 是在源路径下修改文件，若您的代码没有使用诸如 Git、SVN 等版本管理工具时，请提前备份。</p></blockquote> <p>运行命令：<code>npx vue-codemod src -a</code> ，在手动修改前直接使用 vue-codemod 来一波自动升级（实际是语法替换），下面是转换日志，我们可以看到转换了哪些规则，更改了哪些文件；</p> <div class="language-cmd extra-class"><pre class="language-text"><code>npx vue-codemod src -a
+Warning!!
+This tool may overwrite files.
+press enter or enter yes or enter Y to continue:
+Processing use new-component-api transformation: 2.344s
+Processing use new-global-api transformation: 1.370s
+Processing use vue-router-v4 transformation: 563.495ms
+Processing use vuex-v4 transformation: 541.71ms
+Processing use rename-lifecycle transformation: 605.352ms
+Processing use add-emit-declaration transformation: 879.03ms
+Processing use vue-i18n-v9 transformation: 507.606ms
+Processing use element-plus-import transformation: 524.572ms
+Processing use router-update-addRoute transformation: 591.202ms
+Processing use const-app transformation: 614.617ms
+Processing use slot-attribute transformation: 440.388ms
+Processing use slot-scope-attribute transformation: 162.384ms
+Processing use v-for-template-key transformation: 163.131ms
+Processing use v-bind-sync transformation: 102.651ms
+Processing use remove-v-on-native transformation: 132.229ms
+Processing use router-view-keep-alive-transition transformation: 130.557ms
+--------------------------------------------------
+Processed file:
+src/utils/mUtils.js
+src/components/iconSvg/index.js
+src/main.js
+src/lang/index.js
+src/router/index.js
+src/store/index.js
+src/components/echarts/barChart.vue
+src/components/echarts/lineChart.vue
+src/components/echarts/pieChart.vue
+src/components/echarts/radarChart.vue
+src/page/fundData/incomePayPosition.vue
+src/components/pagination/index.vue
+src/page/fundList/components/addFundDialog.vue
+src/page/fundList/components/searchItem.vue
+src/page/permission/components/SwitchRoles.vue
+src/page/share/components/hengShare.vue
+src/page/share/components/infoShare.vue
+src/page/share/components/inviteShare.vue
+src/page/share/components/jianshuLeftShare.vue
+src/page/share/components/jianshuShare.vue
+src/page/share/components/juejinShare.vue
+src/page/share/components/sinaShare.vue
+src/page/share/components/wxCodeModal.vue
+src/page/share/components/yanShare.vue
+src/permission.js
+src/utils/axios.js
+src/layout/bread.vue
+src/layout/content.vue
+src/layout/footerNav.vue
+src/layout/headNav.vue
+src/layout/home.vue
+src/layout/leftMenu.vue
+src/layout/topMenu.vue
+src/page/fundData/fundPosition.vue
+src/page/fundData/typePosition.vue
+src/page/fundList/chinaTabsList.vue
+src/page/fundList/fundList.vue
+src/page/infoManage/infoModify.vue
+src/page/infoManage/infoShow.vue
+src/page/permission/directive.vue
+src/page/userList/userList.vue
+src/page/fundList/moneyData/index.vue
+src/page/index/components/cardList.vue
+src/page/index/components/commentList.vue
+src/page/index/components/logList.vue
+src/page/index/components/salesTable.vue
+src/page/fundList/components/chinaTabsTable.vue
+src/page/login.vue
+package.json
+Processed 49 files
+79 places need to be transformed
+71 places was transformed
+The transformation rate is 89.87%
+The transformation stats:
+
+╔═══════════════════════════════════╤═══════╗
+║ Rule Names                        │ Count ║
+╟───────────────────────────────────┼───────╢
+║ new-component-api                 │   1   ║
+║ new-global-api                    │   1   ║
+║ vue-router-v4                     │   1   ║
+║ vuex-v4                           │   1   ║
+║ rename-lifecycle                  │   5   ║
+║ add-emit-declarations             │  13   ║
+║ vue-i18n-v9                       │   1   ║
+║ element-ui-upgrade                │   6   ║
+║ const-app                         │   1   ║
+║ slot-attribute                    │  15   ║
+║ slot-scope-attribute              │  16   ║
+║ v-for-template-key                │   3   ║
+║ v-bind-sync                       │   2   ║
+║ remove-v-on-native                │   3   ║
+║ router-view-keep-alive-transition │   1   ║
+║ package transformation            │   1   ║
+╚═══════════════════════════════════╧═══════╝
+
+The list that you need to migrate your codes manually:
+index: 1
+{
+  path: 'src/main.js',
+  position: '[7,0]',
+  name: 'remove Vue(global api)',
+  suggest: &quot;The rule of thumb is any APIs that globally mutate Vue's behavior are now moved to the app instance. &quot;,
+  website: 'https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp'
+}
+index: 2
+{
+  path: 'src/main.js',
+  position: '[22,0]',
+  name: 'remove Vue(global api)',
+  suggest: &quot;The rule of thumb is any APIs that globally mutate Vue's behavior are now moved to the app instance. &quot;,
+  website: 'https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp'
+}
+index: 3
+{
+  path: 'src/lang/index.js',
+  position: '[5,41]',
+  name: 'remove Vue(global api)',
+  suggest: &quot;The rule of thumb is any APIs that globally mutate Vue's behavior are now moved to the app instance. &quot;,
+  website: 'https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp'
+}
+index: 4
+{
+  path: 'src/router/index.js',
+  position: '[6,41]',
+  name: 'remove Vue(global api)',
+  suggest: &quot;The rule of thumb is any APIs that globally mutate Vue's behavior are now moved to the app instance. &quot;,
+  website: 'https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp'
+}
+index: 5
+{
+  path: 'src/store/index.js',
+  position: '[4,4]',
+  name: 'remove Vue(global api)',
+  suggest: &quot;The rule of thumb is any APIs that globally mutate Vue's behavior are now moved to the app instance. &quot;,
+  website: 'https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp'
+}
+index: 6
+{
+  path: 'src/directive/permission/index.js',
+  position: '[4,2]',
+  name: 'remove Vue(global api)',
+  suggest: &quot;The rule of thumb is any APIs that globally mutate Vue's behavior are now moved to the app instance. &quot;,
+  website: 'https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp'
+}
+index: 7
+{
+  path: 'src/directive/permission/index.js',
+  position: '[9,2]',
+  name: 'remove Vue(global api)',
+  suggest: &quot;The rule of thumb is any APIs that globally mutate Vue's behavior are now moved to the app instance. &quot;,
+  website: 'https://v3.vuejs.org/guide/migration/global-api.html#a-new-global-api-createapp'
+}
+index: 8
+{
+  path: 'src/router/index.js',
+  position: '[280,6]',
+  name: 'remove * routes',
+  suggest: 'Catch all routes (*, /*) must now be defined using a parameter with a custom regex: ',
+  website: 'https://next.router.vuejs.org/guide/migration/index.html#removal-of-the-fallback-option'
+}
+</code></pre></div><h3 id="step-2-将-element-ui-升级为-element-plus"><a href="#step-2-将-element-ui-升级为-element-plus" class="header-anchor">#</a> Step 2：<a href="https://github.com/originjs/vue2-element-touzi-admin/commit/8cddf35dcf04165fbf997e378205c5428dcb5e7f" target="_blank" rel="noopener noreferrer">将 element-ui 升级为 element-plus<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h3> <p>Vue3 迁移中最大的限制就是依赖，如果诸如 UI 组件之类的依赖不支持 Vue 3，那就建议你暂时不要升级，等支持了再升级；</p> <h3 id="step-3-修复一些全局-api-错误"><a href="#step-3-修复一些全局-api-错误" class="header-anchor">#</a> Step 3：<a href="https://github.com/originjs/vue2-element-touzi-admin/commit/c1a7288299f80e23d5b1ad32f111ee10564ad8bd" target="_blank" rel="noopener noreferrer">修复一些全局 API 错误<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h3> <p>实践中发现有少部分的全局 API 工具是无法精准替换的，这里需要根据控制台的报错或告警信息来手动修改；</p> <h3 id="step-4-修复一些与路由器升级相关的错误"><a href="#step-4-修复一些与路由器升级相关的错误" class="header-anchor">#</a> Step 4：<a href="https://github.com/originjs/vue2-element-touzi-admin/commit/a5c95632e44877360be95014e74229ab13e50664" target="_blank" rel="noopener noreferrer">修复一些与路由器升级相关的错误<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h3> <p>router 4 中有一些迁移的坑，有一部分 vue-codemod 已经帮我们修改了，但仍然有一些非兼容信变更需要手动修改；</p> <h3 id="step-5-修复警告"><a href="#step-5-修复警告" class="header-anchor">#</a> Step 5：<a href="https://github.com/originjs/vue2-element-touzi-admin/commit/7a123320a0d0edf32baa09534c2f7df6664ec730" target="_blank" rel="noopener noreferrer">修复警告<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h3> <p>至此项目已经可以很好的运行起来了，再根据控制台的一些告警进行修复，让它更优雅的运行。</p> <h2 id="最后我们来看看效果图"><a href="#最后我们来看看效果图" class="header-anchor">#</a> 最后我们来看看效果图</h2> <p><img src="https://user-images.githubusercontent.com/40830929/125884473-b89f344c-db98-4496-9d44-33b5e773c93d.png" alt="image-20210716101939971"></p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/originjs/docs/edit/main/docs/guide/tools/vue-codemod/typical-case.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2021/11/19 上午11:29:58</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/docs/guide/tools/vue-codemod/manual-guide.html" class="prev">
+        手动迁移指导
+      </a></span> <span class="next"><a href="/docs/guide/tools/webpack-to-vite/">
+        webpack-to-vite
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/docs/assets/js/app.b8ceaf7d.js" defer></script><script src="/docs/assets/js/2.897ca024.js" defer></script><script src="/docs/assets/js/33.e29cce6c.js" defer></script>
+  </body>
+</html>
